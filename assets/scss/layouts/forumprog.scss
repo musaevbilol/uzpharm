@@ -1,0 +1,136 @@
+
+.ForumProg {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background: #059a77;
+  }
+  .progtitle h1 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 130%;
+    color: #ffffff;
+  }
+  .progtitle p {
+    margin-top: 15px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 150%;
+    color: #ffffff;
+    opacity: 0.8;
+  }
+  .MainProg {
+    display: flex;
+  }
+  
+
+  
+  
+  .collapse-2{
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 20px;
+  }
+ .line{
+    width: 840px;
+    opacity: 0.2;
+border: 1px solid #FFFFFF;
+ }
+ 
+ .p-tag{
+    display: flex;
+ }
+ .tag{
+    display: flex;
+ }
+ h5{
+    color: #FFFFFF;
+    font-size: 13px;
+ }
+ .p-tag p{
+    font-style: normal;
+font-weight: 100;
+font-size: 13px;
+line-height: 150%;
+color: #FFFFFF;
+ }
+ .p-tag p span{
+    font-size: 15px;
+    font-weight: 500;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ }
+
+  .dropdown-option {
+    cursor: pointer;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.5s ease-in-out;
+  }
+ 
+
+  .ant-collapse{
+    width: 888px;
+    background: #078B6C; 
+    height:max-content;
+    border: none;
+ }
+  .ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow svg {
+    display: none;
+  }
+  .ant-collapse-content{
+    background: #078B6C; 
+    border: none;
+  }
+  .ant-collapse > .ant-collapse-item > .ant-collapse-header{
+    padding: 20px 20px;
+    color: #ffff;
+}
+.data{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 140%;
+color: #FFFFFF;
+}
+@media (max-width: 1280px) {
+    .MainProg {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .progtitle p {
+      padding-bottom: 20px;
+    }
+  
+  }
+  @media (max-width: 768px) {
+    .ant-collapse{
+        width: 700px;
+     }
+  }
+  @media (max-width: 640px) {
+    .MainProg {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .progtitle p {
+      padding-bottom: 20px;
+    }
+    
+    .ant-collapse{
+        width: 370px;
+     }
+  }
+  @media (max-width: 414px) {
+    .MainProg {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .progtitle p {
+      padding-bottom: 20px;
+    }
+    .ant-collapse{
+        width: 370px;
+     }
+  }

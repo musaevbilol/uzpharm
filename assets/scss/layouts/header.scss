@@ -1,0 +1,359 @@
+// .nav {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   margin-top: 15px;
+//   margin-bottom: 10px;
+//   width: 100%;
+// }
+
+.nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1245px;
+  margin: 0 auto;
+}
+
+.nav .container .menu{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ul {
+  position: relative;
+  // cursor: pointer;
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 160%;
+  color: #1e2920;
+}
+
+/////////res burger menu  ////////////
+.res-link {
+  display: flex;
+  flex-direction: column;
+  transition: .3s ease all;
+  position: fixed;
+  width: 100%;
+  max-width: 350px;
+  height: 100%;
+  background-color: #07A781;
+  top: 0%;
+  left: 0%;
+}
+
+.res-menu {
+  z-index: 9999;
+  display: none;
+}
+
+// //////////
+
+.nav-regist {
+  display: flex;
+  margin-left: 30px;
+}
+
+.Flex {
+  cursor: pointer;
+  height: 51px;
+  width: 150px;
+  display: flex;
+
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #d1d1d1;
+  border-radius: 4px;
+}
+
+.Flex .rus {
+  width: 20px;
+  height: 20px;
+}
+
+.Flex p {
+  padding-left: 6px;
+  padding-top: 9px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 150%;
+  color: #465863;
+}
+
+.regis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px;
+  margin-left: 15px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 150%;
+  color: #ffffff;
+  background: #06b48b;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.regis:hover {
+  background: #3b9681;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  width: 500px !important;
+}
+
+.nav-logo img {
+  width: 45px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.navlogo img {
+  width: 45px;
+  height: 40px;
+}
+
+.image {
+  margin-right: 19px;
+}
+
+.navlogo {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.navlogo h1 {
+  color: #ffffff;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 150%;
+}
+
+.logoname {
+  cursor: pointer;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  color: #0a9675;
+  margin-right: 40px;
+}
+
+//// second page //////
+
+
+////////////  responsive navbar  /////////
+.burger-menu {
+  cursor: pointer;
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 24px;
+  height: 100%;
+  transition: all 0.3s ease-in;
+}
+
+.burger-menu img {
+  transition: .5s ease all;
+  width: 30px;
+  height: 30px;
+}
+
+.regist2:hover {
+  background: #3b9681;
+}
+
+
+@media (max-width: 1280px) {
+  .burger-menu {
+    display: none;
+  }
+  
+  .nav .container{
+    margin: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .forum button {
+    margin-bottom: 30px;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .res-menu {
+    display: block;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .res-menu {
+    display: block;
+  }
+}
+
+@media (max-width: 375px) {
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  li {
+    flex-direction: row;
+  }
+
+  .text {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 15px;
+    align-items: center;
+  }
+
+  .text2 {
+    font-size: 15px;
+  }
+
+  .text0 {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 10px;
+    padding-bottom: 30px;
+  }
+
+  .flex11 {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .regist2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 50px;
+  }
+
+  .regist2 .h1 {
+    font-size: 15px;
+  }
+
+  .firstPage {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .green {
+    gap: 5px;
+  }
+
+  .gg {
+    font-size: 7px;
+    padding-left: 10px;
+  }
+
+  .firstPage img {
+    margin-bottom: 20px;
+  }
+
+  .g1 {
+    font-size: 7px;
+    padding-left: 17px;
+  }
+
+  .textt h1 {
+    margin-left: 50px;
+  }
+
+  .main {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 414px) {
+  .GreenCard {
+    padding-top: 20px;
+  }
+
+  .text0 {
+    padding-bottom: 30px;
+  }
+
+  .green {
+    gap: 10px;
+  }
+
+  .gg {
+    font-size: 7px;
+    padding-left: 10px;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .res-menu {
+    display: block;
+  }
+
+  .flex11 {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .registration {
+    display: flex;
+    justify-content: center;
+  }
+
+  .regist2 {
+    margin-top: 15px;
+  }
+
+  .text-2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .text-2 h1 {
+    font-size: 22px;
+    font-weight: 900;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  .text-2 p {
+    font-size: 13px;
+  }
+
+}

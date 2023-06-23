@@ -1,0 +1,73 @@
+.prog {
+  padding: 54px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 35px;
+  line-height: 140%;
+  color: #ffffff;
+}
+.programma {
+  height: 187px;
+  left: 0px;
+  top: 108px;
+  background: #078b6c;
+}
+h1 {
+  margin-top: 30px;
+}
+
+.card-container {
+  background: #f5f5f5;
+  overflow: hidden;
+  padding: 24px;
+}
+.card-container > .ant-tabs-card > .ant-tabs-content {
+  height: 120px;
+  margin-top: -16px;
+}
+
+// .card-container > .ant-tabs-card > .ant-tabs-content > .ant-tabs-tabpane {
+//   padding: 16px;
+// }
+
+.card-container > .ant-tabs-card > .ant-tabs-bar .ant-tabs-tab {
+  border-color: transparent;
+  background: transparent;
+}
+
+.card-container > .ant-tabs-card > .ant-tabs-bar .ant-tabs-tab-active {
+  border-color: rgba(6, 180, 139, 1);
+  background: #fff;
+  color: #06b48b;
+}
+.column1 {
+  padding: 12px 20px;
+  gap: 10px;
+  height: 90px;
+  background: #b5ccc4;
+  display: flex;
+}
+.green {
+  padding: 10px 35px;
+  height: 40px;
+  width: 150px;
+  color: #fff;
+  background: #06b48b;
+  border-radius: 4px;
+}
+.mainhole {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 140%;
+  color: #1c2f3f;
+  margin-bottom: 15px;
+}
+.column1 h3 {
+  padding-left: 15px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 170%;
+  color: #1c2f3f;
+}

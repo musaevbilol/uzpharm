@@ -1,0 +1,11 @@
+@import 'helper', 'layouts', 'home', 'pages', 'cards';
+
+
+
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 20px/* 32px */;
+  padding-left: 20px/* 32px */;
+}
