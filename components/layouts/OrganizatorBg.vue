@@ -1,10 +1,11 @@
 <template>
   <!----- Organizator--- -->
   <div class="Organizatorbg">
-    <div class="container Organ xl:pt-[100px] pb-[50px]">
-      <div class="adv-title xl:mr-[84px]">
+    <div class="contain Organ xl:pt-[100px] pb-[50px]">
+      <div class="adv-title">
         <h1>Организаторы</h1>
       </div>
+      
       <div class="allorganizator">
         <div
           class="OrganizatorImg"
@@ -12,13 +13,13 @@
           data-aos-duration="1500"
           data-aos-easing="ease-in-sine"
         >
-          <img src="../../assets/images/blazon.png" alt="" />
+          <img :src="image1" alt="" />
           <h3>
             министерство инвестиций и внешней торговли республики узбекистан
           </h3>
         </div>
         <div class="OrganizatorImg">
-          <img src="../../assets/images/blazon2.png" alt="" />
+          <img :src="image2" alt="" />
           <h3>
             АГЕНТСТВО ПО РАЗВИТИЮ ФАРМАЦЕВТИЧЕСКОЙ ОТРАСЛИ МИНИСТЕРСТВО
             ИНВЕСТИЦИЙ, ПРОМЫШЛЕННОСТИ И ТОРГОВЛИ РЕСПУБЛИКИ УЗБЕКИСТАН
@@ -30,7 +31,7 @@
           data-aos-duration="1500"
           data-aos-easing="ease-in-sine"
         >
-          <img src="../../assets/images/organizator3.png" alt="img" />
+          <img :src="image3" alt="img" />
           <h3>
             Ассоциация представительств иностранных фармацевтических компаний и
             производителей в Республике Узбекистан
@@ -42,12 +43,21 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data(){
+    return{
+      image1:require("~/assets/images/blazon.png"), 
+      image2:require("~/assets/images/blazon2.png"), 
+      image3:require("~/assets/images/organizator3.png"), 
+    }
+  }
+};
 </script>
 
 <style scoped>
 .Organizatorbg {
   background: #f2f8f6;
+
 }
 .OrganizatorImg {
   display: flex;
@@ -55,11 +65,12 @@ export default {};
   justify-content: center;
   align-items: center;
   padding: 20px;
-  width: 250px;
+  width: 260px;
   height: 300px;
   background: #ffffff;
   align-items: center;
-  border: 1px solid white;
+  border: 1px solid grey;
+  border-radius: 4px;
 }
 .OrganizatorImg h3 {
   font-style: normal;
@@ -69,6 +80,7 @@ export default {};
   text-align: center;
   text-transform: uppercase;
   color: #1c2f3f;
+ 
 }
 .OrganizatorImg img {
   width: 90px;
@@ -83,23 +95,68 @@ export default {};
 }
 .Organ {
   display: flex;
+  justify-content: space-between;
 }
 .allorganizator {
   display: grid;
-  grid-gap: 20px;
-  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 30px;
+  grid-template-columns: repeat(3, 1fr);
 }
 
+@media(max-width:1400px){
+  .contain{
+    width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 24px /* 32px */;
+  padding-left: 24px /* 32px */;
+  }
+}
 @media (max-width: 1280px) {
+ 
+}
+@media (max-width: 1200px) {
+  
+  .Organ{
+    padding-top: 100px;
+    padding-bottom: 50px;
+  }
+  
+  .contain{
+    width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 24px /* 32px */;
+  padding-left: 24px /* 32px */;
+  }
+  .OrganizatorImg{
+    width: 245px;
+  height: 300px;
+  }
+}
+@media (max-width:1024px) {
+  .OrganizatorImg{
+    width: 220px;
+  height: 300px;
+  }
+}
+@media (max-width: 992px) {
+  .contain{
+    width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 24px /* 32px */;
+  padding-left: 24px /* 32px */;
+  }
   .Organ {
     display: flex;
     flex-wrap: wrap;
   }
-  .allorganizator {
-    display: grid;
-    grid-gap: 20px;
-    grid-template-columns: repeat(4, 1fr);
+  .OrganizatorImg{
+    width: 220px;
+  height: 360px;
   }
+
 }
 @media (max-width: 768px) {
   .allorganizator {
@@ -108,7 +165,7 @@ export default {};
     grid-template-columns: repeat(4, 1fr);
   }
   .OrganizatorImg {
-    width: 232px;
+    width: 227px;
     height: 335px;
   }
   .adv-title h1 {
@@ -116,12 +173,8 @@ export default {};
     margin-bottom: 25px;
   }
 }
-@media (max-width: 640px) {
-  .Organ {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .adv-title {
+@media (max-width: 576px) {
+  c .adv-title {
     margin-bottom: 30px;
     margin-top: 30px;
   }
@@ -130,14 +183,21 @@ export default {};
     grid-gap: 20px;
     grid-template-columns: repeat(1, 1fr);
   }
+  .OrganizatorImg img{
+    width: 65px;
+  }
 }
-@media (max-width: 414px) {
+@media (max-width: 480px) {
   .Organ {
     display: flex;
     flex-wrap: wrap;
   }
   .OrganizatorImg {
-    width: 385px;
+    width: 100%;
+    height: 250px;
+  }
+  .OrganizatorImg img{
+    width: 65px;
   }
   .adv-title {
     margin-bottom: 30px;

@@ -1,29 +1,32 @@
 <template>
   <!---- green1 column----- -->
   <section class="greencolumn xl:h-[300px] mt-[40px] xl:mt-[100px]">
-    <div class="container green1">
+    <div class="contain green1">
       <div
         class="firstG pt-[80px] aos-animate"
         data-aos="flip-left"
         data-aos-easing="ease-in sine"
         data-aos-duration="3000"
       >
-        >
         <div class="Green1 numimage">
-          <img src="../../assets/images/num1.png" alt="" />
+          <img :src="image" alt="Images green column" />
         </div>
         <div class="Green1">
-          <p class="pt-2 text-[10px]">УЧАСТНИКОВ</p>
+          <p class="pt-2">{{ $t("greencolumn") }}</p>
         </div>
       </div>
-      <div class="firstG pt-[80px]" >
+      <div
+        class="firstG pt-[80px]"
+        data-aos="flip-center"
+        data-aos-easing="ease-in sine"
+        data-aos-duration="3000"
+      >
         <div class="Green1">
-          <img class="xl:w-[70px]" src="../../assets/images/num2.png" alt="" />
+          <img :src="images" alt="Images green column" />
         </div>
         <div class="Green1">
-          <p class="gg pt-2 text-[10px]">
-            ТЕМАТИЧЕСКИХ СЕССИЙ + КРУГЛЫЕ СТОЛЫ +<br />
-            МАСТЕР-КЛАССЫ
+          <p class="gg pt-2 pl-6">
+            {{ $t("greencolp") }}
           </p>
         </div>
       </div>
@@ -34,10 +37,10 @@
         data-aos-duration="3000"
       >
         <div class="Green1">
-          <img src="../../assets/images/num3.png" alt="" />
+          <img :src="Image" alt="Images green column" />
         </div>
         <div class="Green1">
-          <p class="g1 pt-2 text-[10px]">ДЕЛОВОГО ОБЩЕНИЯ</p>
+          <p class="g1 pt-2">{{ $t("greencol") }}</p>
         </div>
       </div>
     </div>
@@ -45,12 +48,37 @@
 </template>
 
 <script>
-export default {};
+import  { mapGetters, mapActions } from "vuex";
+export default {
+  data() {
+    return {
+      image: require("~/assets/images/num1.png"),
+      images: require("~/assets/images/num2.png"),
+      Image: require("~/assets/images/num3.png"),
+    };
+  },
+  computed: {
+    ...mapGetters("media", ["list"]),
+  },
+  methods: {
+    ...mapActions("media", ["fetchData"]),
+    
+    async fetchList(){
+      await this.fetchData();
+    }
+  },
+  mounted() {
+    this.fetchList()
+  },
+};
 </script>
 
 <style scoped>
 .green1 {
+  padding-top: 50px;
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 32px;
 }
 .greencolumn {
@@ -58,8 +86,7 @@ export default {};
 }
 .firstG {
   color: white;
-  margin-top: 50px;
-  width: 400px;
+  width: 100%;
   height: 200px;
   background: #06b48b;
   border-radius: 4px;
@@ -70,23 +97,83 @@ export default {};
   align-items: center;
 }
 .Green1 p {
-  line-height: 150%;
+  font-size: 15px;
+}
+
+@media (max-width: 1400px) {
+  .contain{ 
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 24px /* 32px */;
+  padding-left: 24px /* 32px */;
+}
 }
 @media (max-width: 1280px) {
+  .contain{ 
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 24px /* 32px */;
+  padding-left: 24px /* 32px */;
+}
+  .green1{
+    padding-bottom: 50px;
+  }
+}
+@media (max-width: 1200px) {
+ .firstG{
+  width: 100%;
+ }
+}
+@media (max-width: 1024px) {
+ .firstG{
+  width: 100%;
+ }
+}
+
+@media (max-width: 992px) {
+  .Green1 p {
+    font-size: 12px;
+  }
 }
 @media (max-width: 768px) {
+  .firstG {
+    width: 100%;
+  }
+  .Green1 p {
+    font-size: 20px;
+  }
+  
   .green1 {
+    padding-top: 40px;
+    padding-bottom: 40px;
     display: flex;
-    gap: 10px;
+    flex-wrap: wrap;
+    gap: 20px;
   }
 }
-@media (max-width: 414px) {
+@media (max-width: 480px) {
+  .Green1 .gg{
+  padding-left: 15px;
+  }
   .green1 {
     display: flex;
-    gap: 5px;
+    flex-wrap: wrap;
+    gap: 15px;
   }
-  .numimage img {
-    width: 70px;
+  .Green1 img{
+    widows: 70px;
   }
+ 
 }
+/* // 1760
+// 1440-1400
+// 1200-1280
+// 992
+// 768
+// 576
+// 480
+// 375
+// 320 */
 </style>

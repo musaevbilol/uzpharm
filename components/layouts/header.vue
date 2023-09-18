@@ -1,44 +1,50 @@
 <template>
   <div class="nav">
     <div class="container">
-      <div class="nav-logo">
-        <nuxt-link to="/"
-          ><img class="image" src="../../assets/images/Logo.png" alt=""
-        /></nuxt-link>
-        <nuxt-link to="/"><h1 class="logoname">
-          Second International Pharmaceutical<br />
-          Forum of Uzbekistan
-        </h1></nuxt-link>
+      <div class="NavLogo mt-[10px] mb-[10px]">
+        <nuxt-link to="/"><img class="image" :src="image1" alt="" /></nuxt-link>
+        <nuxt-link to="/">
+          <h1 class="logoname">
+            Second International Pharmaceutical<br />
+            Forum of Uzbekistan
+          </h1>
+        </nuxt-link>
       </div>
-      <div class="menu">
-        
-        <ul>
-          <li v-for="menu in menuArray" :key="menu">
-            <nuxt-link :to="menu.link">
-              {{ menu.title }}
-            </nuxt-link>
+      <div class="menu mt-[10px] mb-[10px]">
+        <ul class="newli">
+          <li>
+            <nuxt-link to="/programma">{{ $t("ProgRamma") }}</nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/members">{{ $t("Members") }}</nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/media">{{ $t("Media") }}</nuxt-link>
           </li>
         </ul>
         <div class="nav-regist">
-          <div class="Flex">
-            <!-- <img class="rus" src="../../assets/images/rus.png" alt="" />
-            <p class="language">Русский</p> -->
-            <img src="../../assets/images/rusimage.png" alt="" />
-          </div>
+          <a-dropdown :trigger="['click']" v-for="AcceptLanguage in langs" :key="AcceptLanguage.title">
+            <a-button class="Flex">
+              <img :src="selected.image" :alt="selected.title" />
+            </a-button>
+
+            <a-menu slot="overlay">
+              <a-menu-item v-for="(AcceptLanguage, index) in langs" :key="index">
+                <nuxt-link class="Flexx" :to="switchLocalePath(AcceptLanguage.title)"
+                  @click.native="chooseLang(AcceptLanguage.title)"><img :src="AcceptLanguage.image"
+                    alt="header-lang-image" />
+                </nuxt-link>
+              </a-menu-item>
+            </a-menu>
+          </a-dropdown>
+
           <!-- <a-button >
-             
            </a-button> -->
-          <button @click="open = true" class="regis">Зарегистрироваться</button>
-          <a-modal
-            :footer="null"
-            title="Зарегистрироваться"
-            centered
-            :visible="open"
-            @ok="open = false"
-            @cancel="open = false"
-            :width="700"
-            :height="640"
-          >
+          <button @click="open = true" class="regis">
+            {{ $t("Regist") }}
+          </button>
+          <a-modal :footer="null" title="Зарегистрироваться" centered :visible="open" @ok="open = false"
+            @cancel="open = false" :width="700" :height="640">
             <div class="InputDiv">
               <input type="text" :placeholder="name" />
               <input type="text" :placeholder="pochta" />
@@ -47,39 +53,28 @@
               <input type="text" :placeholder="rank" />
               <div class="checkbox">
                 <input type="checkbox" id="subscribe" value="subscribe" />
-                <label for="subscribe"
-                  >Я согласен с <span>пользовательскими условиями</span></label
-                ><br />
+                <label for="subscribe">Я согласен с <span>пользовательскими условиями</span></label><br />
               </div>
             </div>
-            <div class="mt-[10px] end-regist">
+            <div class="mt-[10px] end-regist font-semibold">
               <h1>Зарегистрироваться</h1>
             </div>
           </a-modal>
         </div>
       </div>
     </div>
-    <div class="res-menu" v-if="isMenuOpened">
-      <div class="nav-logo">
-        <img class="image" src="../../assets/images/Logo.png" alt="" />
-        <h1 class="logoname">
-          Second International Pharmaceutical<br />
-          Forum of Uzbekistan
-        </h1>
-      </div>
+
+    <div class="res-menu" :class="{ 'open-res-menu': isMenuOpened }">
       <transition name="mobile-nav">
-        <ul class="container res-link">
-          <div class="navlogo">
-            <img
-              class="image navimage"
-              src="../../assets/images/logofooter.png"
-              alt=""
-            />
+        <ul class="res-link">
+          <div class="navbarlogo">
+            <img class="image navimage" :src="image2" alt="" />
             <h1 class="logoname">
-              Second International Pharmaceutical Forum of Uzbekistan
+              Second International Pharmaceutical<br />
+              Forum of Uzbekistan
             </h1>
           </div>
-          <li v-for="menu in menuArray" :key="menu">
+          <li v-for="menu in menuArray" :key="menu && menu.title">
             <nuxt-link :to="menu.link">
               {{ menu.title }}
             </nuxt-link>
@@ -87,38 +82,63 @@
         </ul>
       </transition>
     </div>
-    <div>
-      <!-- burger mmenu -->
-      <div class="burger-menu" @click="openMenu">
-        <img
-          v-if="!isMenuOpened"
-          src="../../assets/images/menu.png"
-          alt="image"
-        />
-        <img
-          v-if="isMenuOpened"
-          src="../../assets/images/exit.png"
-          alt="image"
-        />
+
+    <!-- burger mmenu -->
+    <div class="mobile-menu">
+      <div class="nav-logo">
+        <img class="image" :src="image1" alt="" />
+        <h1 class="logoname">
+          Second International Pharmaceutical<br />
+          Forum of Uzbekistan
+        </h1>
       </div>
-      <!-- ------------Navbar----------- -->
-      <!-- header -->
+      <div class="BurgerMenu">
+        <button v-if="!isMenuOpened" @click="openMenu">
+          <img :src="image3" alt="image" />
+        </button>
+        <button v-if="isMenuOpened" @click="openMenu">
+          <img :src="image4" alt="image" />
+        </button>
+      </div>
     </div>
+    <!-- ------------Navbar----------- -->
+    <!-- header -->
   </div>
 </template>
-
 <script>
 import { Modal } from "ant-design-vue";
-
+import { Dropdown, Menu, Button, Icon } from "ant-design-vue";
+import menu_array from "~/frag/menu.js";
 export default {
   components: {
     "a-modal": Modal,
+    "a-dropdown": Dropdown,
+    "a-menu": Menu,
+    "a-menu-item": Menu.Item,
+    "a-button": Button,
+    // 'a-icon': Icon,
+  },
+  i18n: {
+    inject: true,
   },
   data() {
     return {
-      isMenuOpened: true,
-      is_navbar_active: false,
-      isMenuOpened: true,
+      allLangs: {
+        ru: {
+          title: "ru",
+          image: require("~/assets/images/rusimage.png"),
+        },
+        en: {
+          title: "en",
+          image: require("~/assets/images/english.png"),
+        },
+      },
+      langs: {},
+      selected: {},
+      menu_array,
+      selectedOption: "Select an option",
+      options: ["Option 1"],
+      isMenuOpened: false,
       menuArray: [
         {
           title: "Программа",
@@ -128,10 +148,7 @@ export default {
           title: "Участники",
           link: "/members",
         },
-        {
-          title: "Проживание",
-          link: "/place",
-        },
+
         {
           title: "Медиа",
           link: "/media",
@@ -142,8 +159,11 @@ export default {
       rank: "Должность",
       pochta: "Почта",
       company: "Компания",
-
       open: false,
+      image1: require("~/assets/images/Logo.png"),
+      image2: require("~/assets/images/logofooter.png"),
+      image3: require("~/assets/images/menu.png"),
+      image4: require("~/assets/images/exit.png"),
     };
   },
   methods: {
@@ -154,109 +174,41 @@ export default {
       const winWidth = window.innerWidth;
 
       if (winWidth <= 768) {
-        this.isMenuOpened = false;
-      } else {
         this.isMenuOpened = true;
+      } else {
+        this.isMenuOpened = false;
       }
     },
     openMenu() {
-      if (this.isMenuOpened == false) {
-        this.isMenuOpened = true;
-      } else {
-        this.isMenuOpened = false;
-      }
+      this.isMenuOpened = !this.isMenuOpened;
+    },
+    chooseLang(AcceptLanguage) {
+      this.selected = this.allLangs[AcceptLanguage + ""];
+      this.langs = { ...this.allLangs };
+      delete this.langs[AcceptLanguage + ""];
     },
   },
+
   mounted() {
-    const winWidth = window.innerWidth;
-    window.addEventListener("scroll", () => {
-      this.handleScroll();
-      window.pageYOffset > 0
-        ? (this.is_navbar_active = true)
-        : (this.is_navbar_active = false);
-      if (winWidth < 800 && this.is_navbar_active == true) {
-        this.isMenuOpened = false;
-      }
-    }),
-      window.addEventListener("resize", this.checkScreenWidth);
+    // const winWidth = window.innerWidth;
+    // window.addEventListener("scroll", () => {
+    //   this.handleScroll();
+    //   window.pageYOffset > 0
+    //     ? (this.is_navbar_active = true)
+    //     : (this.is_navbar_active = false);
+    //   if (winWidth < 800 && this.is_navbar_active == true) {
+    //     this.isMenuOpened = false;
+    //   }
+    // }),
     this.checkScreenWidth();
+
+    this.selected = this.allLangs[this.$i18n.locale];
+    this.langs = { ...this.allLangs };
+    delete this.langs[this.$i18n.locale];
   },
 };
 </script>
 
-<style scoped>
-.InputDiv {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-.InputDiv input {
-  width: 650px;
-}
-.checkbox {
-  display: flex;
-  align-items: center;
-}
-.checkbox label {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 17px;
-  line-height: 150%;
-  color: #465863;
-}
-.checkbox input {
-  width: 12.5px;
-  height: 12.5px;
-  margin-right: 11px;
-}
-span {
-  color: rgba(28, 110, 176, 1);
-}
-form {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-}
-input {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 15px;
-  line-height: 150%;
-  color: #465863;
-  padding: 10px 15px 15px;
-  width: 434px;
-  height: 50px;
-  background: #ffffff;
-  border: 1.5px solid #c5d4e0;
-  border-radius: 4px;
-}
-input:hover {
-  transition: border 0.5s ease-out;
-  border: 1px solid rgba(6, 180, 139, 1);
-}
-.scroll {
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(5px);
-  transition: 0.3s;
-}
-
-.content::-webkit-scrollbar {
-  display: none;
-}
-@media (max-width: 768px) {
-  form {
-    display: flex;
-    flex-wrap: wrap;
-  }
-}
-@media (max-width: 414px) {
-  form {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 15px;
-  }
-  input {
-    width: 100%;
-  }
-}
+<style scoped lang="scss">
+@import "../../assets/scss/layouts/header.scss";
 </style>

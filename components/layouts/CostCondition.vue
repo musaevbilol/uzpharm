@@ -1,11 +1,10 @@
 <template>
   <!-- ---- Cost and Condition ---- -->
-  <section class="container mt-50px xl:mt-[100px] xl:pb-[80px] pb-[50px]">
-    <div class="Condition">
-      <div class="cond xl:mr-[100px]">
+  <section class="contain mt-50px xl:mt-[100px] xl:pb-[80px] pb-[50px]">
+    <div class="Condition xl:gap-[160px]">
+      <div class="cond">
         <h1>Стоимость и условия участия</h1>
         <div>
-          <a-button @click="open = true"> Регистрация </a-button>
           <a-modal
             :footer="null"
             title="Зарегистрироваться"
@@ -30,50 +29,68 @@
               </div>
             </div>
             <div class="mt-[10px] end-regist">
-                  <h1>Зарегистрироваться</h1>
-                </div>
+              <h1>Зарегистрироваться</h1>
+            </div>
           </a-modal>
         </div>
       </div>
       <!-----  ant design ---->
-      <a-tabs default-active-key="1" @change="callback">
-        <a-tab-pane @click="changeStyle" key="1" tab="Участие">
-          <div class="CardContainer">
-            <div class="stoimost pt-[5px] pb-[5px]">Cтоимость</div>
-            <div class="numtext mt-[15px]">
-              <h1>$1 500</h1>
-            </div>
-            <div class="numtext1 mt-[13px]">
-              <p>За одного делегата</p>
-            </div>
+    
+      <div class="gridcolumn">
+        <div class="btn-2">
+          <button @click="activateText = 1" class="bt active">Участие</button>
+      <button @click="activateText = 2" class="bt ">
+        Стать партнером
+      </button>
+        </div>
+        <div class="CardContainer" v-if="activateText === 1">
+          <div class="stoimost pt-[5px] pb-[5px]">Cтоимость</div>
+          <div class="numtext mt-[10px]">
+            <h1>$1 500</h1>
           </div>
+          <div class="numtext1 text-lg mt-[8px] font-semibold">
+            <p>За одного делегата</p>
+          </div>
+          <div class="numtext1">
+            <a-button class="btnbutton" @click="open = true">
+            Регистрация
+          </a-button>
+          </div>
+          
+        </div>
+        <div v-if="activateText === 2">
+          <div class="text-h1">
+            <h1>
+              Оставьте заявку на онлайн-участие и наши представители свяжутся с
+              вами для подробной информации
+            </h1>
+            <h2>
+              Выбор одного из спонсорских пакетов — это наилучший способ
+              продемонстрировать лидирующее положение на рынке, расширить сеть
+              деловых контактов, привлечь эффективных партнеров.
+            </h2>
+          </div>
+          <div class="inputform">
+            <form>
+              <input type="text" :placeholder="name" />
+              <input type="text" :placeholder="pochta" />
+              <input type="number" :placeholder="number" />
+              <input type="text" :placeholder="company" />
+              <input type="text" :placeholder="rank" />
+            </form>
+          </div>
+          <button class="btn-new">Отправить</button>
+        </div>
+      </div>
+
+      <!-- <a-tabs default-active-key="1" @change="callback">
+        <a-tab-pane @click="changeStyle" key="1" tab="Участие">
+        
         </a-tab-pane>
         <a-tab-pane key="2" tab="Стать партнером" force-render>
-          <div>
-            <div class="text-h1">
-              <h1>
-                Оставьте заявку на онлайн-участие и наши представители свяжутся
-                с вами для подробной информации
-              </h1>
-              <h2>
-                Выбор одного из спонсорских пакетов — это наилучший способ
-                продемонстрировать лидирующее положение на рынке, расширить сеть
-                деловых контактов, привлечь эффективных партнеров.
-              </h2>
-            </div>
-            <div class="inputform">
-              <form>
-                <input type="text" :placeholder="name" />
-                <input type="text" :placeholder="pochta" />
-                <input type="number" :placeholder="number" />
-                <input type="text" :placeholder="company" />
-                <input type="text" :placeholder="rank" />
-              </form>
-            </div>
-            <button class="btn-new">Отправить</button>
-          </div>
+         
         </a-tab-pane>
-      </a-tabs>
+      </a-tabs> -->
     </div>
   </section>
 </template>
@@ -92,41 +109,34 @@ export default {
       rank: "Должность",
       pochta: "Почта",
       company: "Компания",
-      buttonStyle: {
-        backgroundColor: "white",
-        color: "black",
-        border: "1px solid black",
-      },
       open: false,
+      activateText: 1,
     };
-  },
-  method: {
-    changeStyle() {
-      this.buttonStyle.backgroundColor = "red";
-      this.buttonStyle.color = "white";
-      this.buttonStyle.border = "1px solid blue";
-    },
   },
 };
 </script>
 
 <style scoped>
-.end-regist{
+.Condition {
+ display:flex;
+
+}
+.end-regist {
   display: flex;
   justify-content: center;
   text-align: center;
   padding: 15px;
   width: 650px;
   height: 60px;
-background: #06B48B;
-border-radius: 4px;
+  background: #06b48b;
+  border-radius: 4px;
 }
-.end-regist h1{
+.end-regist h1 {
   font-weight: 600;
-font-size: 20px;
-line-height: 150%;
-text-align: center;
-color: #FFFFFF;
+  font-size: 20px;
+  
+  text-align: center;
+  color: #ffffff;
 }
 .InputDiv input {
   width: 650px;
@@ -148,26 +158,38 @@ color: #FFFFFF;
   margin-right: 11px;
 }
 span {
-  color: rgba(28, 110, 176, 1);
+  color: #06b48b;
 }
-button {
+.btnbutton {
   transition: 0.4s ease-out;
-  margin-top: 30px;
-  width: 180px;
+  margin-top: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #06b48b;
+  background: #ffffff;
   border-radius: 4px;
-  padding: 20px;
-  font-style: normal;
+  padding: 2px 16px;
   font-weight: 600;
-  font-size: 15px;
-  line-height: 150%;
+  font-size: 14px;
   color: #06b48b;
 }
+.bt{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 50px;
+  border: 1px solid #06b48b;
+  border-radius: 4px;
+  color: #06b48b;
+}
+.btn-2{
+  display: flex;
+  gap: 20px;
+}
+
 .text-h1 h1 {
-  font-style: normal;
+ 
   font-weight: 700;
   font-size: 23px;
   line-height: 140%;
@@ -185,7 +207,7 @@ input {
   line-height: 150%;
   color: #465863;
   padding: 10px 15px 15px;
-  width: 434px;
+  width: 410px;
   height: 50px;
   background: #ffffff;
   border: 1.5px solid #c5d4e0;
@@ -243,14 +265,12 @@ input:hover {
   opacity: 0.8;
 }
 .cond h1 {
+  width: 250px;
   font-style: normal;
   font-weight: 700;
-  font-size: 40px;
+  font-size: 30px;
   line-height: 140%;
   color: #1c2f3f;
-}
-.Condition {
-  display: flex;
 }
 .CardContainer {
   width: 400px;
@@ -267,18 +287,60 @@ input:hover {
 }
 .btn-new {
   margin-top: 30px;
-  width: 170px;
+
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 4px;
-  padding: 6px 15px;
-  font-style: normal;
+  padding: 2px 16px;
+
   font-weight: 600;
   font-size: 20px;
-  line-height: 150%;
+
   color: #fff;
   background: #06b48b;
+}
+
+@media (max-width: 1400px) {
+  .contain {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 24px /* 32px */;
+  padding-left: 24px /* 32px */;
+}
+
+  .bt{
+  margin-bottom: 40px;
+}
+
+}
+@media (max-width: 1280px) {
+  .contain {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 24px /* 32px */;
+  padding-left: 24px /* 32px */;
+}
+
+}
+@media (max-width: 1200px) {
+ 
+}
+@media (max-width: 992px) {
+  .contain {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 24px /* 32px */;
+  padding-left: 24px /* 32px */;
+}
+ .Condition{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+ }
 }
 @media (max-width: 768px) {
   .cond {
@@ -289,11 +351,18 @@ input:hover {
     flex-wrap: wrap;
   }
 }
-@media (max-width: 414px) {
-  .Condition {
-    display: flex;
-    flex-wrap: wrap;
+@media (max-width: 480px) {
+  .CardContainer{
+    width: 370px;
   }
+  .btn-2{
+    margin-top: 15px;
+  }
+  .btn-2 button{
+  width: 140px;
+  height: 40px;
+  }
+ 
   form {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
